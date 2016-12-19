@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20161219224414) do
 
   create_table "reads", force: :cascade do |t|
     t.integer  "link_id"
+    t.string   "link_url"
+    t.string   "link_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
