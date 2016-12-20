@@ -2,7 +2,7 @@ class Api::V1::ReadsController < ApplicationController
   before_action :cors_check
 
   def index
-    @reads = Read.where('updated_at > ?', 24.hours.ago).order(read_count: :desc).limit(10)
+    @reads = Read.top_reads
     render json: @reads, status: 201
   end
 
