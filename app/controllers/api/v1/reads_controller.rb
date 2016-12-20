@@ -1,8 +1,12 @@
 class Api::V1::ReadsController < ApplicationController
   before_action :cors_check
+
+
   def create
-    @read = Read.new(read_params)
+    @read = Read.find_or_create_by(read_params)
+
     if @read.save
+      @read.mark_read_count
       render json: @read, status: 201
     else
       render json: @read.errors.full_messages, status: 500
