@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ReadsController do
-  before(:each) do
-    Read.destroy_all
-  end
-
   it "creates a read" do
     read = {link_id: 1, link_url: "http://example.com", link_title: "foobar"}
 
