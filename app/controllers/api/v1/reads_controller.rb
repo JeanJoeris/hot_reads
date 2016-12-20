@@ -1,6 +1,10 @@
 class Api::V1::ReadsController < ApplicationController
   before_action :cors_check
 
+  def index
+    @reads = Read.top_reads
+    render json: @reads, status: 201
+  end
 
   def create
     @read = Read.find_or_create_by(read_params)
